@@ -1,0 +1,8 @@
+Django==6.0.4
+djangorestframework==3.14.0
+django-extensions==4.1
+pydot==4.0.1
+pyparsing==3.3.2
+pypdf==6.10.2
+gunicorn==21.2.0
+psycopg2-binary==2.9.9

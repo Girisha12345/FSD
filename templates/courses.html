@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Courses | Chanakya University{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+            <h2 class="mb-0">UG and PG Courses</h2>
+            <a href="{% url 'home' %}" class="btn btn-outline-secondary">Back to Home</a>
+        </div>
+        <div class="row g-4">
+            {% for course in courses %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm border-0 custom-card">
+                    <div class="card-body">
+                        <span class="badge text-bg-dark mb-2">{{ course.course_type }}</span>
+                        <h5 class="card-title">{{ course.course_name }}</h5>
+                        <p class="card-text mb-1"><strong>Specialization:</strong> {{ course.specialization }}</p>
+                        <p class="card-text mb-1"><strong>Duration:</strong> {{ course.duration }}</p>
+                        <p class="card-text mb-3"><strong>Department:</strong> {{ course.department.department_name }}</p>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <a href="{% url 'faculty-page' %}?course_id={{ course.id }}" class="btn btn-sm btn-outline-primary">View Faculty</a>
+                            <a href="{% url 'home' %}" class="btn btn-sm btn-hero">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12">
+                <div class="alert alert-info">No courses available.</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Hostel Facilities | Chanakya University{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h2 class="mb-4">Hostel Facilities</h2>
+        <div class="row g-4">
+            {% for item in hostels %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm border-0 custom-card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.hostel_name }}</h5>
+                        <p class="mb-1"><strong>Room Type:</strong> {{ item.room_type }}</p>
+                        <p class="mb-1"><strong>Total Rooms:</strong> {{ item.total_rooms }}</p>
+                        <p class="mb-1"><strong>Available Rooms:</strong> {{ item.available_rooms }}</p>
+                        <p class="mb-3"><strong>Course:</strong> {{ item.course.course_name }} - {{ item.course.specialization }}</p>
+                        <a href="{% url 'home' %}#contact" class="btn btn-sm btn-outline-primary">Check Availability</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12">
+                <div class="alert alert-info">No hostel facilities found.</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
